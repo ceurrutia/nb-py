@@ -29,15 +29,23 @@ class CuentaJoven(Cuenta):
             
       #Bonificacion setter
       
+            def get_bonificacion(self):
+              return self.bonificacion
+              
             def set_bonificacion(self, bonificacion):
-              self.titular = bonificacion
+              self.bonificacion = bonificacion
                  
-    
-#Programa cuenta
-edad_titular = True
-
-edad_titular = int(input("Ingresa tu edad: "))
-if edad_titular >= 18 and edad_titular <= 35:
-      print("Eres beneficiario de cuenta Joven")
-else:
-      print("No eres beneficiario del programa Cuenta Joven")
+            def es_titular_valido(self):
+              edad_titular = self.calcular_edad() 
+              return 18 <= edad_titular < 25   
+                  
+                  
+            def retirar(self, cantidad):
+                  if self.es_titular_valido() and cantidad <= self.cantidad:
+                        self.cantidad -= cantidad
+                        return True
+                  else:
+                        return False
+                  
+            def mostrar(self):
+                  return f'Tienes beneficio de Cuenta Joven'(self.bonificacion)

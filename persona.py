@@ -42,11 +42,12 @@ def set_nombre(self, edad):
       
 def set_dni(self, dni):
       self.nombre = dni
-      
+
 #Calcular si es mayor de edad
 
-def Es_mayor_de_edad(self):
-    return self.edad >= 18
+def es_mayor_de_edad(self):
+    edad_titular = self.calcular_edad() 
+    return 18 <= edad_titular < 25      
 
 #Bloque principal
 #Ingreso de datos
@@ -61,15 +62,16 @@ else:
 
 edad = int(input('Ingrese su edad: ')) 
 
+
 #Creo una instancia de persona
 persona = Persona(nombre, edad, dni) 
 
 #Verificar si es mayor
-if persona.Es_mayor_de_edad():
+if persona.es_mayor_de_edad():
     print("Eres mayor de edad")
 else:
     print("Acceso no permitido, eres menor de edad")
     
 #Imprimo los datos usando str
     
-print(persona)
+print(persona.nombre, persona.dni, persona.edad)
