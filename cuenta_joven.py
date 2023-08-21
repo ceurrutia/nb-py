@@ -15,37 +15,48 @@ cuenta.
 '''
 
 from cuenta import Cuenta
-from persona import Persona
 
-
-#Comienza porgrama tarjeta joven creanado objeto hereda de Cuenta
+#Comienza porgrama tarjeta joven creanado objeto que hereda de Cuenta
 
 class CuentaJoven(Cuenta):
     #inicializo contructor
-	def __init__(self, cuenta, bonificacion):
-            self.cuenta = cuenta
+	def __init__(self, edad, cantidad, bonificacion):
+            self.cuenta = cantidad
             self.bonificacion = bonificacion
             
             
-      #Bonificacion setter
+      #Bonificacion getter
       
             def get_bonificacion(self):
               return self.bonificacion
+        
+      #Bonificacion setter
               
             def set_bonificacion(self, bonificacion):
               self.bonificacion = bonificacion
                  
             def es_titular_valido(self):
-              edad_titular = self.calcular_edad() 
-              return 18 <= edad_titular < 25   
+              if edad < 25 and edad > 18:
+                  return True
+              else:
+                  return False 
                   
                   
             def retirar(self, cantidad):
-                  if self.es_titular_valido() and cantidad <= self.cantidad:
-                        self.cantidad -= cantidad
-                        return True
+                  if self.es_titular_valido():
+                        super().retirar(cantidad)
                   else:
-                        return False
+                        print('No eres titular valido para retirar: ', cantidad)
                   
             def mostrar(self):
-                  return f'Tienes beneficio de Cuenta Joven'(self.bonificacion)
+                  print('Cuenta Joven', cantidad)
+                  print('Bonificacion:', bonificacion)
+            
+#Creo una instancia de Cuenta Joven
+CuentaJoven = CuentaJoven(edad=24, cantidad=2000, bonificacion=30)
+
+cantidad_a_retirar = 300
+CuentaJoven.retirar(cantidad_a_retirar)
+print(CuentaJoven.get_cantidad, CuentaJoven.get_bonificacion)
+
+
