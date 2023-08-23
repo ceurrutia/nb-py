@@ -81,3 +81,18 @@ def get_int():
 resultado = get_int()
 print("El valor entero ingresado es: ", resultado)
 
+
+#Otra forma de hacerlo
+
+def get_int2():
+    ingreso_correcto = False
+    while not ingreso_correcto:
+        user_input = input("Ingrese un numero entero: ")
+        try:
+            valor = int(user_input)
+        except ValueError:
+            print("No es un entero válido. Intente nuevamente")
+    
+    return valor
+print(f'Numero ingresado:  {get_int()} ')
+
