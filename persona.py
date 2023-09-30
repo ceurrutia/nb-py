@@ -64,14 +64,17 @@ edad = int(input('Ingrese su edad: '))
 
 
 #Creo una instancia de persona
-persona = Persona(nombre, edad, dni) 
+persona1 = Persona(nombre, edad, dni) 
 
 #Verificar si es mayor
-if persona.es_mayor_de_edad():
+
+if Persona.es_mayor_de_edad():
     print("Eres mayor de edad")
 else:
     print("Acceso no permitido, eres menor de edad")
     
 #Imprimo los datos usando str
+
+persona1 = ("Cecilia", 345678, 34)
     
-print(persona.nombre, persona.dni, persona.edad)
+print(persona1.nombre)
